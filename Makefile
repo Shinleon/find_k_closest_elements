@@ -1,8 +1,10 @@
 CC=g++
 CXXFLAGS ?= -Wall -Wpedantic -Wextra -std=c++14
+
 output=-o
 TARGET=main.a
 OBJ=obj
+
 ifdef DEBUG
 	CXXFLAGS += -g
 endif
@@ -14,7 +16,7 @@ endif
 .PHONY: all
 all: $(TARGET)
 
-$(TARGET): $(addprefix $(OBJ)/, main.o TwoPointerSolution.o PriorityQueueSolution.o )
+$(TARGET): $(addprefix $(OBJ)/, main.o TwoPointerSolution.o PriorityQueueSolution.o LinearSolution.o)
 	$(CC) $(CXXFLAGS) $^ $(output) $@ -Iinc
 
 $(OBJ)/main.o: main.cxx 
@@ -26,6 +28,8 @@ $(OBJ)/TwoPointerSolution.o: src/TwoPointerSolution.cxx
 $(OBJ)/PriorityQueueSolution.o: src/PriorityQueueSolution.cxx
 	$(CC) -c $(CXXFLAGS) $< $(output) $@ -Iinc
 
+$(OBJ)/LinearSolution.o: src/LinearSolution.cxx
+	$(CC) -c $(CXXFLAGS) $< $(output) $@ -Iinc
 .PHONY: clean
 clean:
 	rm -rf $(TARGET) *.o

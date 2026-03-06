@@ -7,6 +7,7 @@
 
 #include "TwoPointerSolution.h"
 #include "PriorityQueueSolution.h"
+#include "LinearSolution.h"
 
 #define SEARCH_TARGET (100)
 #define SEARCH_QUANT  (8)
@@ -33,8 +34,11 @@ int main(void) {
   std::vector<int> result_1 = TwoPointerSolution_SearchThenExpand::findClosestElements(arr, k, x);
   std::vector<int> result_2 = PriorityQueueSolution::findClosestElements(arr, k, x);
   std::vector<int> result_3 = TwoPointerSolution_SearchRaw::findClosestElements(arr, k, x);
+  std::vector<int> result_4 = LinearSolution::findClosestElements(arr, k, x);
+
   std::cout << "two pointer::search then expand: "; printVector(result_1);
   std::cout << "priority queue: "; printVector(result_2);
   std::cout << "two pointer::search raw: "; printVector(result_3);
+  std::cout << "linear solution: "; printVector(result_4);
   return 0;
 }

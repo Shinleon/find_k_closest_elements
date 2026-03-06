@@ -7,6 +7,15 @@
 
 
 namespace PriorityQueueSolution {
+  class Point {
+  private:
+    int val;
+    int ref;
+  public:
+    Point(int v, int r);
+    bool operator<(const Point& other) const;
+    int getVal() const;
+  };
   Point::Point(int v, int r) : val(v), ref(r) {}
 
   bool Point::operator<(const Point& other) const {
