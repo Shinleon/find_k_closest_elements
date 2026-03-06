@@ -8,9 +8,9 @@
 #include "TwoPointerSolution.h"
 #include "PriorityQueueSolution.h"
 
-#define SEARCH_TARGET (16)
-#define SEARCH_QUANT  (6)
-#define ARRAY_LENGTH  (20)
+#define SEARCH_TARGET (100)
+#define SEARCH_QUANT  (8)
+#define ARRAY_LENGTH  (40)
 
 void printVector(std::vector<int>& arr) {
   for(int i = 0; i < arr.size(); i++) {
@@ -30,9 +30,11 @@ int main(void) {
   int x = SEARCH_TARGET;
   printVector(arr);
   std::cout << "Search Target: " << x << "\tSearch Quantity: " << k << std::endl;
-  std::vector<int> result_1 = TwoPointerSolution::findClosestElements(arr, k, x);
+  std::vector<int> result_1 = TwoPointerSolution_SearchThenExpand::findClosestElements(arr, k, x);
   std::vector<int> result_2 = PriorityQueueSolution::findClosestElements(arr, k, x);
-  printVector(result_1);
-  printVector(result_2);
+  std::vector<int> result_3 = TwoPointerSolution_SearchRaw::findClosestElements(arr, k, x);
+  std::cout << "two pointer::search then expand: "; printVector(result_1);
+  std::cout << "priority queue: "; printVector(result_2);
+  std::cout << "two pointer::search raw: "; printVector(result_3);
   return 0;
 }

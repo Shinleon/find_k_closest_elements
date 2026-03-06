@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <vector>
-#include <iostream>
 #include <queue>
+#include <deque>
 
 #include "PriorityQueueSolution.h"
 
@@ -14,7 +14,7 @@ namespace PriorityQueueSolution {
     return diff == 0 ? (val < other.val) : (diff < 0);
   }
 
-  int Point::getVal(){
+  int Point::getVal() const{
     return this->val;
   }
 
@@ -26,13 +26,27 @@ namespace PriorityQueueSolution {
         queue.pop();
       }
     }
-    std::vector<int> result;
+    std::deque<int> bef_result;
+    int pop_wrap = 0;
     while(!queue.empty()){
-      Point p = queue.top();
-      result.insert(result.begin(), p.getVal());
+      int p = queue.top().getVal();
+      if (p < x) {
+        bef_result.push_back(p);
+      } else {
+        bef_result.push_front(p);
+        pop_wrap++;
+      }
       queue.pop();
     }
-    std::sort(result.begin(), result.end());
+    for(int i = 0; i < pop_wrap; i++) {
+      bef_result.push_back(bef_result.front());
+      bef_result.pop_front();
+    }
+    std::vector<int> result;
+    while(!bef_result.empty()){
+      result.push_back(bef_result.front());
+      bef_result.pop_front();
+    }
     return result;
   }
 }

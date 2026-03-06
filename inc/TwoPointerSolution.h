@@ -4,8 +4,10 @@
 #include <vector>
 #include "TwoPointerSolution.h"
 
-namespace TwoPointerSolution {
-  int findIndexOfClosestElement(std::vector<int>& arr, int target);
+namespace TwoPointerSolution_SearchThenExpand {
+  std::vector<int> findClosestElements(std::vector<int>&arr, int k, int x);
+}
+namespace TwoPointerSolution_SearchRaw {
   std::vector<int> findClosestElements(std::vector<int>&arr, int k, int x);
 }
 

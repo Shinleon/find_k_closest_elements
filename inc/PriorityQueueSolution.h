@@ -10,7 +10,7 @@ private:
 public:
   Point(int v, int r);
   bool operator<(const Point& other) const;
-  int getVal();
+  int getVal() const;
 };
   std::vector<int> findClosestElements(std::vector<int>&arr, int k, int x);
 }

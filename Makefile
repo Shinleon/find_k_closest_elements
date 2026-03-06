@@ -1,8 +1,8 @@
 CC=g++
-CXXFLAGS ?= -Wall -Wpedantic
+CXXFLAGS ?= -Wall -Wpedantic -Wextra -std=c++14
 output=-o
 TARGET=main.a
-
+OBJ=obj
 ifdef DEBUG
 	CXXFLAGS += -g
 endif
@@ -14,22 +14,22 @@ endif
 .PHONY: all
 all: $(TARGET)
 
-$(TARGET): main.o TwoPointerSolution.o PriorityQueueSolution.o 
+$(TARGET): $(addprefix $(OBJ)/, main.o TwoPointerSolution.o PriorityQueueSolution.o )
 	$(CC) $(CXXFLAGS) $^ $(output) $@ -Iinc
 
-main.o: main.cxx 
+$(OBJ)/main.o: main.cxx 
 	$(CC) -c $(CXXFLAGS) $< $(output) $@ -Iinc
 
-TwoPointerSolution.o: src/TwoPointerSolution.cxx
-	$(CC) -c $(CXXFLAGS) $< -Iinc
+$(OBJ)/TwoPointerSolution.o: src/TwoPointerSolution.cxx
+	$(CC) -c $(CXXFLAGS) $< $(output) $@ -Iinc
 
-PriorityQueueSolution.o: src/PriorityQueueSolution.cxx
-	$(CC) -c $(CXXFLAGS) $< -Iinc
+$(OBJ)/PriorityQueueSolution.o: src/PriorityQueueSolution.cxx
+	$(CC) -c $(CXXFLAGS) $< $(output) $@ -Iinc
 
 .PHONY: clean
 clean:
 	rm -rf $(TARGET) *.o
-	rm -rf *.out
+	rm -rf $(OBJ)/*
 	rm -rf *.stats
 
 .PHONY: test_target
