@@ -1,4 +1,5 @@
 #include <vector>
+#include <cstdlib>
 #include "LinearSolution.h"
 
 namespace LinearSolution {
