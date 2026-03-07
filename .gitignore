@@ -41,4 +41,4 @@
 *.dwo
 
 # build file from cmake
-cmake_example/build/*
+build/
