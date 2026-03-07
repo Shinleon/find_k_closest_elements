@@ -2,8 +2,6 @@
 #include <cstdlib>
 #include <deque>
 
-#include <iostream>
-
 #include "TwoPointerSolution.h"
 
 namespace TwoPointerSolution_SearchThenExpand {
@@ -81,14 +79,10 @@ int findIndexOfClosestElement(std::vector<int>& arr, int target) {
 }
 
 namespace  TwoPointerSolution_SearchRaw {
-  void printlr(int left, int right) { 
-    std::cout << "left: " << left << "\tright: " << right << std::endl;
-  }
   std::vector<int> findClosestElements(std::vector<int>& arr, int k, int x) {
     std::vector<int> ret;
     int left = 0;
     int right = arr.size() - k;
-    printlr(left, right);
     while(left < right) {
       int mid = (left+right)/2;
       int left_diff = abs(arr[mid-1] - x);
@@ -98,7 +92,6 @@ namespace  TwoPointerSolution_SearchRaw {
       } else {
         right = mid - 1;
       }
-      printlr(left, right);
     }
     for(int i = 0; i < k; i++) {
       ret.push_back(arr[left + i]);

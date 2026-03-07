@@ -36,23 +36,19 @@ namespace PriorityQueueSolution {
       }
     }
     std::deque<int> bef_result;
+    std::vector<int> result;
     int pop_wrap = 0;
     while(!queue.empty()){
       int p = queue.top().getVal();
       if (p < x) {
-        bef_result.push_back(p);
+        result.push_back(p);
       } else {
         bef_result.push_front(p);
         pop_wrap++;
       }
       queue.pop();
     }
-    for(int i = 0; i < pop_wrap; i++) {
-      bef_result.push_back(bef_result.front());
-      bef_result.pop_front();
-    }
-    std::vector<int> result;
-    while(!bef_result.empty()){
+    for(int i = 0; i < pop_wrap; i++) { 
       result.push_back(bef_result.front());
       bef_result.pop_front();
     }
