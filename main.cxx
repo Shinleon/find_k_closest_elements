@@ -40,5 +40,21 @@ int main(void) {
   std::cout << "priority queue: "; printVector(result_2);
   std::cout << "two pointer::search raw: "; printVector(result_3);
   std::cout << "linear solution: "; printVector(result_4);
+  std::cout << std::endl;
+  arr  = {10, 10, 10, 12, 12};
+  k = 2;
+  x = 11;
+  printVector(arr);
+  std::cout << "Search Target: " << x << "\tSearch Quantity: " << k << std::endl;
+  result_1 = TwoPointerSolution_SearchThenExpand::findClosestElements(arr, k, x);
+  result_2 = PriorityQueueSolution::findClosestElements(arr, k, x);
+  result_3 = TwoPointerSolution_SearchRaw::findClosestElements(arr, k, x);
+  result_4 = LinearSolution::findClosestElements(arr, k, x);
+
+  std::cout << "two pointer::search then expand: "; printVector(result_1);
+  std::cout << "priority queue: "; printVector(result_2);
+  std::cout << "two pointer::search raw: "; printVector(result_3);
+  std::cout << "linear solution: "; printVector(result_4);
+
   return 0;
 }
